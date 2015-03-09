@@ -93,7 +93,7 @@ to probabalistic
     ;; pick an entry from resourceList randomly. The chance of picking a patch index value is proportional to the number of times
     ;;   it is repeated, which is determined by the resource value of the patch
     let choice one-of resourceList
-    let neighborlist []
+    let neighborList []
     ask allNeighbors [set neighborList lput self neighborList] ;; list of neighborhood patches 
     move-to item choice neighborList ;; move to patch with probability determined by resource abundance
   ]
@@ -203,7 +203,7 @@ nAgents
 nAgents
 1
 100
-2
+131
 1
 1
 NIL
@@ -350,7 +350,7 @@ resourceGrowthRate
 resourceGrowthRate
 1
 10
-2
+1
 1
 1
 NIL

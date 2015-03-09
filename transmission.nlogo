@@ -90,7 +90,7 @@ to encounter
   
   let place random 3 ;; randomly choose trait to change
   
-  let partner one-of agents in-radius interactionRadius ;; randomly select an agent within "interactionRadius" to copy from
+  let partner one-of other agents in-radius interactionRadius ;; randomly select an agent within "interactionRadius" to copy from
   if partner != nobody [ ;; check to see if a partner for copying has been identified
     set traits replace-item place traits [item place traits] of partner ;; learn new information copied from partner
     ]
@@ -107,7 +107,7 @@ to prestige
 
   let place random 3 ;; randomly choose trait to change (note that this may not be the trait conferring prestige).
 
-  let partner one-of agents in-radius interactionRadius ;; randomly select an agent within "interactionRadius" to copy from
+  let partner one-of other agents in-radius interactionRadius ;; randomly select an agent within "interactionRadius" to copy from
   let prestigePlace 0 ;; set prestige trait as item 0 in "traits" (trait list)
   if partner != nobody [ ;; check to see if a partner for copying has been identified
     let prestigeValue [item prestigePlace traits] of partner ;; evaluate prestige of partner
@@ -128,8 +128,9 @@ to conformist
   let information "" ;; information to be copied or innovated
   let place random 3 ;; randomly choose trait to change
 
-  let partners agents in-radius interactionRadius ;; all other agents within interactionRadius
+  let partners other agents in-radius interactionRadius ;; all other agents within interactionRadius
   if partners != nobody [ ;; check to be sure that there are partners to copy from
+    ;type "partners = " print count partners
     let popularity [] ;; list to hold numbers of agents with each value for the trait selected
     foreach n-values traitRange [?]  [ 
       ;; generate popularity list such that the position in the list indicates the trait value 
@@ -232,7 +233,7 @@ CHOOSER
 transmissionType
 transmissionType
 "vertical" "encounter" "prestige" "conformist"
-1
+3
 
 SLIDER
 5
@@ -243,7 +244,7 @@ nAgents
 nAgents
 1
 100
-340
+416
 1
 1
 NIL
